@@ -216,21 +216,22 @@
 
     // Set request task priority
     // !!Available on iOS 8 +
-    if ([request.requestTask respondsToSelector:@selector(priority)]) {
-        switch (request.requestPriority) {
-            case YTKRequestPriorityHigh:
-                request.requestTask.priority = NSURLSessionTaskPriorityHigh;
-                break;
-            case YTKRequestPriorityLow:
-                request.requestTask.priority = NSURLSessionTaskPriorityLow;
-                break;
-            case YTKRequestPriorityDefault:
-                /*!!fall through*/
-            default:
-                request.requestTask.priority = NSURLSessionTaskPriorityDefault;
-                break;
-        }
-    }
+    // 2017-04-13 fixed for crashing when using Carthage
+//    if ([request.requestTask respondsToSelector:@selector(priority)]) {
+//        switch (request.requestPriority) {
+//            case YTKRequestPriorityHigh:
+//                request.requestTask.priority = NSURLSessionTaskPriorityHigh;
+//                break;
+//            case YTKRequestPriorityLow:
+//                request.requestTask.priority = NSURLSessionTaskPriorityLow;
+//                break;
+//            case YTKRequestPriorityDefault:
+//                /*!!fall through*/
+//            default:
+//                request.requestTask.priority = NSURLSessionTaskPriorityDefault;
+//                break;
+//        }
+//    }
 
     // Retain request
     YTKLog(@"Add request: %@", NSStringFromClass([request class]));
